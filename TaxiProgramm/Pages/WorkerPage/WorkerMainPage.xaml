@@ -1,0 +1,16 @@
+﻿<Page x:Class="TaxiProgramm.Pages.WorkerPage.WorkerMainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TaxiProgramm.Pages.WorkerPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="419" d:DesignWidth="792"
+      Title="WorkerMainPage">
+
+    <Grid>
+        <Label MaxHeight="50" MaxWidth="500" Width="500" Height="50" Margin="0,0,292,369" Content="Добро пожаловать клиент" FontSize="21"/>
+        <Button x:Name="ChoosDrivers" Margin="291,144,301,225" VerticalAlignment="Center" Width="200" Height="50" MaxWidth="200" MaxHeight="50" HorizontalAlignment="Center" Content="Заказать такси" Background="#FF92B0FF" FontSize="14"/>
+        <Button x:Name="ChoosDrivers_Copy" Margin="291,213,301,156" VerticalAlignment="Center" Width="200" Height="50" MaxWidth="200" MaxHeight="50" Content="Прошлые заказы" Background="#FF92B0FF" FontSize="14"/>
+    </Grid>
+</Page>

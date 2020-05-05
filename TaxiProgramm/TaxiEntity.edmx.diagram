@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="08fb8a7885fa4414812cb63ea90e8666" Name="Diagram1">
+        <EntityTypeShape EntityType="TaxiProgModel.Car" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaxiProgModel.Client" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaxiProgModel.Discount" Width="1.5" PointX="1.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaxiProgModel.Order" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaxiProgModel.TaxiDriver" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <AssociationConnector Association="TaxiProgModel.FK__Car__WorkerPhone__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="TaxiProgModel.FK__Order__ClientNum__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="TaxiProgModel.FK__Order__DriverNum__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="TaxiProgModel.ClientDiscount" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
