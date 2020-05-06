@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище TaxiProgModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище TaxiProgModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Car">
           <Key>
             <PropertyRef Name="CarNumber" />
@@ -22,7 +22,7 @@
           <Property Name="PhoneNumber" Type="nvarchar" MaxLength="11" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="Photo" Type="varbinary" MaxLength="1" />
+          <Property Name="Photo" Type="varbinary(max)" />
           <Property Name="MiddleName" Type="nvarchar" MaxLength="30" />
           <Property Name="Gender" Type="nvarchar" MaxLength="1" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
@@ -67,14 +67,14 @@
           <Property Name="PhoneNumber" Type="nvarchar" MaxLength="11" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="Photo" Type="varbinary" MaxLength="1" />
+          <Property Name="Photo" Type="varbinary(max)" />
           <Property Name="MiddleName" Type="nvarchar" MaxLength="30" />
           <Property Name="Gender" Type="nvarchar" MaxLength="1" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="60" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Salary" Type="decimal" Precision="10" Scale="2" />
         </EntityType>
-        <Association Name="FK__Car__WorkerPhone__628FA481">
+        <Association Name="FK__Car__WorkerPhone__7D439ABD">
           <End Role="TaxiDriver" Type="Self.TaxiDriver" Multiplicity="1" />
           <End Role="Car" Type="Self.Car" Multiplicity="*" />
           <ReferentialConstraint>
@@ -86,7 +86,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ClientDis__Disco__59FA5E80">
+        <Association Name="FK__ClientDis__Disco__74AE54BC">
           <End Role="Discount" Type="Self.Discount" Multiplicity="1" />
           <End Role="ClientDiscount" Type="Self.ClientDiscount" Multiplicity="*" />
           <ReferentialConstraint>
@@ -98,7 +98,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ClientDis__Phone__59063A47">
+        <Association Name="FK__ClientDis__Phone__73BA3083">
           <End Role="Client" Type="Self.Client" Multiplicity="1" />
           <End Role="ClientDiscount" Type="Self.ClientDiscount" Multiplicity="*" />
           <ReferentialConstraint>
@@ -110,7 +110,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Order__ClientNum__5EBF139D">
+        <Association Name="FK__Order__ClientNum__797309D9">
           <End Role="Client" Type="Self.Client" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -122,7 +122,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Order__DriverNum__5FB337D6">
+        <Association Name="FK__Order__DriverNum__7A672E12">
           <End Role="TaxiDriver" Type="Self.TaxiDriver" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -141,29 +141,28 @@
           <EntitySet Name="Discount" EntityType="Self.Discount" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaxiDriver" EntityType="Self.TaxiDriver" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Car__WorkerPhone__628FA481" Association="Self.FK__Car__WorkerPhone__628FA481">
+          <AssociationSet Name="FK__Car__WorkerPhone__7D439ABD" Association="Self.FK__Car__WorkerPhone__7D439ABD">
             <End Role="TaxiDriver" EntitySet="TaxiDriver" />
             <End Role="Car" EntitySet="Car" />
           </AssociationSet>
-          <AssociationSet Name="FK__ClientDis__Disco__59FA5E80" Association="Self.FK__ClientDis__Disco__59FA5E80">
+          <AssociationSet Name="FK__ClientDis__Disco__74AE54BC" Association="Self.FK__ClientDis__Disco__74AE54BC">
             <End Role="Discount" EntitySet="Discount" />
             <End Role="ClientDiscount" EntitySet="ClientDiscount" />
           </AssociationSet>
-          <AssociationSet Name="FK__ClientDis__Phone__59063A47" Association="Self.FK__ClientDis__Phone__59063A47">
+          <AssociationSet Name="FK__ClientDis__Phone__73BA3083" Association="Self.FK__ClientDis__Phone__73BA3083">
             <End Role="Client" EntitySet="Client" />
             <End Role="ClientDiscount" EntitySet="ClientDiscount" />
           </AssociationSet>
-          <AssociationSet Name="FK__Order__ClientNum__5EBF139D" Association="Self.FK__Order__ClientNum__5EBF139D">
+          <AssociationSet Name="FK__Order__ClientNum__797309D9" Association="Self.FK__Order__ClientNum__797309D9">
             <End Role="Client" EntitySet="Client" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK__Order__DriverNum__5FB337D6" Association="Self.FK__Order__DriverNum__5FB337D6">
+          <AssociationSet Name="FK__Order__DriverNum__7A672E12" Association="Self.FK__Order__DriverNum__7A672E12">
             <End Role="TaxiDriver" EntitySet="TaxiDriver" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TaxiProgModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -185,7 +184,7 @@
           <Property Name="PhoneNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Photo" Type="Binary" MaxLength="1" FixedLength="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="MiddleName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Gender" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
@@ -227,7 +226,7 @@
           <Property Name="PhoneNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Photo" Type="Binary" MaxLength="1" FixedLength="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="MiddleName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Gender" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />

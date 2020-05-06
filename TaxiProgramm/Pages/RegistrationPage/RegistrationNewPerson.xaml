@@ -8,7 +8,7 @@
       d:DesignHeight="419" d:DesignWidth="792"
       Title="RegistrationNewPerson">
 
-    <Grid>
+    <Grid Loaded="Grid_Loaded">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="3*"/>
@@ -44,7 +44,7 @@
         <Button x:Name="LastPage" Content="назад" FontSize="14" Grid.Column="2" Grid.Row="0" Background="#FF92B0FF" HorizontalAlignment="Right" VerticalAlignment="Top" Click="LastPage_Click"/>
         <Image x:Name="Photo"  Width="100" Height="150" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="1" Grid.RowSpan="6"/>
         <Button x:Name="DownloadPhoto" Grid.Column="1" Grid.Row="5" Content="Загрузить" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14" Background="#FF92B0FF" Click="DownloadPhoto_Click"/>
-        <RadioButton x:Name="ClientChek" Grid.Column="0" Grid.Row="8" VerticalAlignment="Center" Content="Я водитель" HorizontalAlignment="Center" FontSize="14"/>
-        <RadioButton x:Name="WorkerCheck" Grid.Column="1" Grid.Row="8" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Я Клиент" FontSize="14"/>
+        <RadioButton x:Name="WorkerCheck" Grid.Column="0" Grid.Row="8" VerticalAlignment="Center" Content="Я водитель" HorizontalAlignment="Center" FontSize="14"/>
+        <RadioButton x:Name="ClientChek" Grid.Column="1" Grid.Row="8" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Я Клиент" FontSize="14" IsChecked="True"/>
     </Grid>
 </Page>

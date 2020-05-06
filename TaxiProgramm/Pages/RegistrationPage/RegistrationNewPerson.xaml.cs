@@ -27,13 +27,14 @@ namespace TaxiProgramm.Pages.RegistrationPage
             InitializeComponent();
         }
         TaxiProgEntities entities = new TaxiProgEntities();
+        string iFile = "";
         private void Registration_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 if (FirstName.Text == "" && SecondName.Text == "" && LastName.Text == "" && Gender.Text == "" && Phone.Text == "" && Email.Text == "" && Password.Text == "")
                 {
-                    MessageBox.Show("", "");
+                    MessageBox.Show("Вы не заполнили одно из полей", "Ошибка",MessageBoxButton.OK,MessageBoxImage.Warning);
                 }
                 bool TrueEmail = false;
 
@@ -81,18 +82,31 @@ namespace TaxiProgramm.Pages.RegistrationPage
                 }
                 if (Symbol1 < 1 && Symbol2 < 1 && Symbol3 < 1 && Symbol4 < 1 && Number < 1 && Password.Text.Length < 8)
                 {
-                    MessageBox.Show("", "");
+                    MessageBox.Show("Вы ввели не корректный пароль", "Ошибка",MessageBoxButton.OK,MessageBoxImage.Warning);
                     return;
                 }
-                    
 
+                //конвертация изображения для бд
+                byte[] imageData = null; //начало конвертации
+                FileInfo fInfo = new FileInfo(iFile);
+                long numBytes = fInfo.Length;
+                FileStream fStream = new FileStream(iFile, FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fStream);
+                imageData = br.ReadBytes((int)numBytes);
 
 
                 if (ClientChek.IsChecked == true)
                 {
                     Client NewClient = new Client
                     { 
-                    
+                    PhoneNumber = Phone.Text,
+                    FirstName = FirstName.Text,
+                    LastName = SecondName.Text,
+                    Photo = imageData,
+                    MiddleName = LastName.Text,
+                    Gender = Gender.Text,
+                    Email = Email.Text,
+                    Password = Password.Text
                     
                     };
                     entities.Clients.Add(NewClient);
@@ -102,7 +116,14 @@ namespace TaxiProgramm.Pages.RegistrationPage
                 {
                     TaxiDriver NewDriver = new TaxiDriver
                     {
-
+                    PhoneNumber = Phone.Text,
+                    FirstName = FirstName.Text,
+                    LastName = SecondName.Text,
+                    Photo = imageData,
+                    MiddleName = LastName.Text,
+                    Gender = Gender.Text,
+                    Email = Email.Text,
+                    Password = Password.Text
 
                     };
                     entities.TaxiDrivers.Add(NewDriver);
@@ -112,7 +133,7 @@ namespace TaxiProgramm.Pages.RegistrationPage
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,"",MessageBoxButton.OK,MessageBoxImage.Error);
+                MessageBox.Show(ex.ToString(),"",MessageBoxButton.OK,MessageBoxImage.Error);
             }
             
         }
@@ -122,29 +143,30 @@ namespace TaxiProgramm.Pages.RegistrationPage
             NavigationService.Navigate(new pages.StartPage());
         }
 
-        byte[] imageData = null; //начало конвертации
+        
         private void DownloadPhoto_Click(object sender, RoutedEventArgs e)
         {
             //диалоговое окно для открытия файлов
-            string iFile = "";
+            
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            dialog.Filter = "Image files (*.png;*.jpeg;*.jpg)|*.png;*.jpeg;*.jpg|All files (*.*)|*.*";
             if (dialog.ShowDialog() == true )
             {
                 iFile = dialog.FileName;
             }
-            //конвертация изображения для бд
-            FileInfo fInfo = new FileInfo(iFile);
-            long numBytes = fInfo.Length;
-            FileStream fStream = new FileStream(iFile, FileMode.Open, FileAccess.Read);
-            BinaryReader br = new BinaryReader(fStream);
-            imageData = br.ReadBytes((int)numBytes);
+            
             //для отображения изображения
             BitmapImage image = new BitmapImage();
             image.BeginInit();
             image.UriSource = new Uri(iFile);
             image.EndInit();
             Photo.Source = image;
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<string> size = entities.Clients.Select(c => c.Gender).ToList();
+            Gender.ItemsSource = size;
         }
     }
 }
